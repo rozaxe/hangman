@@ -1,0 +1,223 @@
+👵
+	Hangman game
+	v1
+	MIT - Axel ЯB (rozaxe)
+👵
+
+📦files🔴
+
+🐇👾🍇
+
+	🍰life 🚂
+	🍰remaining 🚂
+	🍰guess 🍨🐚🔡
+	🍰hided 🍨🐚🔡
+
+	👴 Constructor
+	🐈🕹🍇
+		🍮life 6
+		🍮remaining 0
+		🍮guess 🔷🍨🐚🔡🐸
+		🍮hided 🔷🍨🐚🔡🐸
+	🍉
+
+	👴 Returns a random word
+	🐖🎰➡️🔡🍇
+		👴 Open words file
+		🍦try 🔷📄📜🔤words.txt🔤
+		🍊☁️try 🍇
+			😀🔤Can't open file !🔤
+			🍩🚪💻1
+		🍉
+		🍦file 🍺try
+
+		👴 First line is the numbers of words
+		👴 🗡 seems to not work
+		🍮line 🔤🔤
+		🍮continue 👍
+		🔁continue 🍇
+			🍮buff 📓file 1
+			🍊☁️buff 🍇
+				😀🔤File corrupted !🔤
+				🍩🚪💻2
+			🍉🍓🍇
+				🍮char 🍺🔷🔡📇🍺buff
+				🍊😛char 🔤❌n🔤🍇
+					🍮continue 👎
+				🍉🍓🍇
+					🍮line 🍪line char 🍪
+				🍉
+			🍉
+		🍉
+		🍦num 🍺🚂line 10
+
+		👴 Random seems to not work, here a word around
+		🍮rand 🍩🎰🚄num 1
+		🍊◀️rand 0 🍇
+			🍮rand ➖0 rand
+		🍉
+		🍮rand 🚮rand num
+		🍮rand ➕rand 1
+
+		👴 Read line until we reach the good one
+		🍮line 🔤🔤
+		🔂i ⏩0 rand 🍇
+			🍮line 🔤🔤
+			🍮continue 👍
+			🔁continue 🍇
+				🍮buff 📓file 1
+				🍊☁️buff 🍇
+					😀🔤File corrupted !🔤
+					🍩🚪💻3
+				🍉🍓🍇
+					🍮char 🍺🔷🔡📇🍺buff
+					🍊😛char 🔤❌n🔤🍇
+						🍮continue 👎
+					🍉🍓🍇
+						🍮line 🍪line char 🍪
+					🍉
+				🍉
+			🍉
+		🍉
+		🍎line
+	🍉
+
+	👴 Prepare word to guess
+	🐖🍽🍇
+
+		🍦word 🎰🐕
+
+		👴 Convert word into an array of character
+		🍮remaining 📏word
+		🍮i 0
+		🔁❎😛remaining i 🍇
+			🍦c 🔪word i 1
+
+			👴 Add character to array and add unknow character
+			🐻guess c
+			🐻hided 🔤❓🔤
+			🍫i
+		🍉
+	🍉
+
+	👴 Show hided word
+	🐖📟🍇
+		👴 Create string from array
+		🍦new 🔷🔡🍨hided 🔤 🔤
+
+		😀new
+	🍉
+
+	👴 Show remaining lifes
+	🐖💕🍇
+		🍮str 🔤🔤
+		🍮i 0
+
+		👴 Show lifes
+		🔁❎😛life i 🍇
+			🍮str 🍪str 🔤❤️ 🔤🍪
+			🍫i
+		🍉
+
+		👴 Show fails
+		🔁❎😛i 6 🍇
+			🍮str 🍪str 🔤☠️️ 🔤🍪
+			🍫i
+		🍉
+
+		😀str
+	🍉
+
+	👴 Ask for letter
+	🐖⌨️➡️🔡🍇
+		🍦in 🔷🔡😯 🔤Enter a letter🔤
+		🍎🔪in 0 1
+	🍉
+
+	👴 Replace letter in word
+	🐖🎍char 🔡➡️👌🍇
+		🍮found 👎
+
+		👴 For every char in guess
+		🔂i ⏩ 0 🐔guess 🍇
+			🍦c 🍺🐽guess i 	👴 Get char
+			🍊😛c char 🍇
+				🍦f 🍺🐽hided i 	👴 Is char already found
+				🍊❎😛c f 🍇
+					👴 New character found, replace it in hided
+					🐨hided i
+					👴 If last char, append it
+					🍊😛i ➖🐔guess 1 🍇
+						🐻hided c
+					🍉🍓🍇
+						🐵hided i c
+					🍉
+
+					🍳remaining
+					🍮found 👍
+				🍉
+			🍉
+		🍉
+		🍎found
+	🍉
+
+	👴 Player wins
+	🐖👏🍇
+		🍦new 🔷🔡🍨guess 🔤🔤
+		😀🍪🔤You guess it : 🔤 new 🍪
+	🍉
+
+	👴 Player losts
+	🐖💀🍇
+		🍦new 🔷🔡🍨guess 🔤🔤
+		😀🍪🔤You loose, it was : 🔤 new 🍪
+	🍉
+
+	👴 Play a game
+	🐖🎯🍇
+		🍽🐕
+
+		🍮playing 👍
+
+		👴 Ask for letter until word guessed or no more life
+		🔁playing 🍇
+
+			👴 Show hided word
+			📟🐕
+
+			👴 Show remaining lifes
+			💕🐕
+
+			👴 Get character from player
+			🍦c ⌨️🐕
+
+			👴 Test again word to guess
+			🍦found 🎍🐕 c
+
+
+			🍊😛found 👍🍇
+				👴 A character was found
+				🍊😛remaining 0 🍇
+					👏🐕
+					🍮playing 👎
+				🍉
+			🍉🍓🍇
+				👴 Minus lifes
+				🍳life
+				🍊😛life 0 🍇
+					💀🐕
+					🍮playing 👎
+				🍉
+			🍉
+		🍉
+	🍉
+
+	👴 Main
+	🐇🐖🏁➡️🚂🍇
+
+		🍦game 🔷👾🕹
+		🎯game
+
+		🍎0
+	🍉
+🍉
